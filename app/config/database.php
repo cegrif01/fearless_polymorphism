@@ -55,9 +55,10 @@ return array(
 		'mysql' => array(
 			'driver'    => 'mysql',
 			'host'      => '10.0.0.200',
-			'database'  => 'database',
+			'database'  => 'fearless_polymorphism',
 			'username'  => 'root',
-			'password'  => getenv('DB_PASSWORD'),
+			//'password'  => getenv('DB_PASSWORD'),
+			'password'  => 'testpassword',
 			'charset'   => 'utf8',
 			'collation' => 'utf8_unicode_ci',
 			'prefix'    => '',

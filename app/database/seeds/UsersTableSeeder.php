@@ -13,7 +13,6 @@ class UsersTableSeeder extends Seeder {
             [
                 'id'=>1,
                 'user_type_id'=>1,
-                'username'=>'cegrif01', 
                 'name' => 'Charles',
                 'email'=>'cegrif01@gmail.com',
                 //'email' => 'rangerchuck82086@gmail.com',
@@ -24,7 +23,6 @@ class UsersTableSeeder extends Seeder {
             [
                 'id'=>2,
                 'user_type_id'=>1,
-                'username'=>'zingbee01',
                 'name' => 'Mandy', 
                 'email'=>'zingbee01@gmail.com',
                 'password'=>Hash::make('password'), 
