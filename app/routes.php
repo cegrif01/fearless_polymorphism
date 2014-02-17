@@ -13,5 +13,13 @@
 
 Route::get('/', function()
 {
+    
 	return View::make('hello');
 });
+
+Route::resource('users', 'UsersController');
+
+Route::resource('transactions', 'TransactionsController');
+
+
+Route::resource('accounts', 'AccountsController');

@@ -54,7 +54,7 @@ return array(
 
 		'mysql' => array(
 			'driver'    => 'mysql',
-			'host'      => '10.0.0.100',
+			'host'      => '10.0.0.200',
 			'database'  => 'database',
 			'username'  => 'root',
 			'password'  => getenv('DB_PASSWORD'),
