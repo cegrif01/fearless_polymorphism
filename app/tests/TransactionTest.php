@@ -31,9 +31,4 @@ class TransactionTest extends TestCase
         $this->assertEquals('The account has 200 added to it', $message);
 
     }
-
-    public function test_process_recurring_transaction()
-    {
-        
-    }
 }

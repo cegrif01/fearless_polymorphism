@@ -1,6 +1,6 @@
 <?php
 
-class TransactionFactory extends AbstractFactory
+class TransactionFactory
 {
     const EXPENSE = 1;
 
