@@ -22,7 +22,7 @@ Vagrant.configure("2") do |config|
 
   # Create a private network, which allows host-only access to the machine
   # using a specific IP.
-  #config.vm.network :private_network, ip: "192.168.2.10"
+  #config.vm.network :private_network, ip: "192.168.2.30"
 
   config.vm.network :private_network, ip: "10.0.0.200"
 

@@ -13,13 +13,13 @@
 
 Route::get('/', function()
 {
-    
-	return View::make('hello');
+    echo "welcome to the first laravel meetup";
 });
 
+Route::get('example_get', 'TransactionsController@example_get');
+
+Route::get('example_post', 'TransactionsController@example_post');
+
 Route::resource('users', 'UsersController');
-
-Route::resource('transactions', 'TransactionsController');
-
 
 Route::resource('accounts', 'AccountsController');

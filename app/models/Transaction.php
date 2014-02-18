@@ -1,40 +1,20 @@
 <?php
 
-class Transaction extends Eloquent 
-{
+class Transaction
+
+    public function __construct(TransactionTypeInterface $transactionType)
+    {
+        $this->transactionType = $transactionType;
+    }
+
     /**
      * @var TransactionTypeInterface $transactionType;
      */
     protected $transactionType;
 
-    protected $fillable=['amount','transaction_type_id','account_id','description','purchase_date'];
-
-    //protected $guarded = ['id', 'account_id'];
-
-    public function account()
+    public function processNewTransaction()
     {
-        return $this->belongsTo('Account');
-    }
-
-    public function user()
-    {
-        return $this->belongsTo('User');
-    }
-
-    /**
-     * The database table used by the model.
-     *
-     * @var string
-     */
-    protected $table = 'transactions';
-
-    public function processNewTransaction(array $input)
-    {
-        $instance = new static;
-
-        $instance->fill($input);
-
-        $this->transactionType->processTransaction($instance);
+        $this->transactionType->processTransaction($this);
     }
 
 }
