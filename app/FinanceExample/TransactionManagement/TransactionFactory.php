@@ -6,9 +6,9 @@ class TransactionFactory extends AbstractFactory
 
     const INCOME = 2;
 
-    public static function make(array $input)
+    public function make(array $input)
     {   
-        if( ! array_key_exists('transaction_type_id', $input) {
+        if( ! array_key_exists('transaction_type_id', $input)) {
 
             throw new InvalidArgumentException;
         }

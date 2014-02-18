@@ -1,9 +1,14 @@
 <?php
 
-class Transaction
+class Transaction extends Eloquent
+{
+    protected $fillable = ['transaction_type_id', 'amount'];
 
-    public function __construct(TransactionTypeInterface $transactionType)
+    public function __construct(array $input, TransactionTypeInterface $transactionType)
     {
+        //eloquent depends on an array containing the input
+        parent::__construct($input);
+
         $this->transactionType = $transactionType;
     }
 
@@ -14,7 +19,7 @@ class Transaction
 
     public function processNewTransaction()
     {
-        $this->transactionType->processTransaction($this);
+        return $this->transactionType->processTransaction($this);
     }
 
 }

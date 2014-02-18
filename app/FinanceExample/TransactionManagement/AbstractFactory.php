@@ -2,5 +2,5 @@
 
 abstract class AbstractFactory
 {
-    abstract public function make();
+    abstract public function make(array $input);
 }
