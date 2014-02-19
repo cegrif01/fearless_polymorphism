@@ -14,15 +14,39 @@ class Transaction extends Eloquent
 
     }
 
+    public function performComplicatedMethodWithIfElse()
+    {
+        //oh and deductAmount has some conditionals too!
+        $this->account->deductAmount();
+
+        if($this->account->amount < 0) {
+            //a bunch of if-else's in sendAlert
+            //to figure out the type of alert
+            $this->account->sendAlert();
+        }
+    }
+
+    public function performOtherComplicatedMethodWithIfElse()
+    {
+        
+        if($this->amount > 1000 && $this->withInTodaysRange()) {
+            //oh and addAmount has some conditionals too!
+            $this->account->addAmount(); 
+            return;   
+        }
+
+        return 'please contact your bank cuz you spending too much money';
+    }
+
     public function processNewTransaction()
     {
         if($this->transaction_type_id == self::EXPENSE) {
 
-            return "The account has $this->amount taken away from it";
+            $this->performComplicatedMethodWithIfElse();
 
         } elseif ($this->transaction_type_id == self::INCOME) {
 
-            return "The account has $this->amount added to it";
+            $this->performOtherComplicatedMethodWithIfElse();
 
         } else {
 
