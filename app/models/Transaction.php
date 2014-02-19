@@ -14,11 +14,6 @@ class Transaction extends Eloquent
 
     }
 
-    /**
-     * @var TransactionTypeInterface $transactionType;
-     */
-    protected $transactionType;
-
     public function processNewTransaction()
     {
         if($this->transaction_type_id == self::EXPENSE) {
