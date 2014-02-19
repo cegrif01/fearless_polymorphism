@@ -1,10 +1,12 @@
 <?php
 
-class TransactionFactory
+class AnotherTransactionFactory extends AbstractFactory
 {
     const EXPENSE = 1;
 
     const INCOME = 2;
+
+    const RECURRING = 3;
 
     public function make(array $input)
     {   
@@ -17,11 +19,15 @@ class TransactionFactory
 
         switch($transactionType) {
             case self::EXPENSE:
-                return new Transaction($input, new Expense);
+                return new Transaction($input, new Expense(new Alert));
                 break;
 
             case self::INCOME:
-                return new Transaction($input, new Income);
+                return new Transaction($input, new Income(new Alert));
+                break;
+
+            case self::RECURRING:
+                return new Transaction($input, new Recurring);
                 break;
 
             default:
