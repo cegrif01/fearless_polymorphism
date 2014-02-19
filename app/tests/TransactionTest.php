@@ -4,14 +4,14 @@ class TransactionTest extends TestCase
 {
 
     /**
-     * I instantiate a factory because I want to return the transaction with the correct
-     * transaction_type dependency
+     * I instantiate a factory because I want to return the transaction with 
+     * the correct transaction_type dependency
      */
     public function test_process_expense_transaction()
     {
         $input = [ 'transaction_type_id' => 1, 'amount' => 200];
 
-        $transaction = (new TransactionFactory)->make($input);
+        $transaction = new Transaction($input);
         
         $message = $transaction->processNewTransaction();
 
@@ -22,7 +22,7 @@ class TransactionTest extends TestCase
     {
         $input = [ 'transaction_type_id' => 2, 'amount' => 200];
 
-        $transaction = (new TransactionFactory)->make($input);
+        $transaction = new Transaction($input);
         
         $message = $transaction->processNewTransaction();
 
@@ -30,13 +30,14 @@ class TransactionTest extends TestCase
     }
 
     /**
-     * @expectedException InvalidArgumentException
-     * 
+     * @expectedException Exception
      */
-    public function test_input_with_no_index_called_transaction_type_id_throws_exception()
+    public function test_invalid_transaction_type_throws_exception()
     {
         $input = ['amount' => 200];
 
-        $transaction = (new TransactionFactory)->make($input);
+        $transaction = new Transaction($input);
+        
+        $transaction->processNewTransaction();
     }
 }
