@@ -8,14 +8,14 @@ interface TransactionTypeInterface
 
 class Income implements TransactionTypeInterface
 {
-    public function __construct(Alert $alert) {
+    public function __construct(Alert $alert) 
+    {
         $this->alert = $alert;
     }
-
     
     public function processTransaction(Transaction $transaction)
     {
-        $account = $transaction->account->subtractAmount($transaction->amount);
+        $account = $transaction->account->addAmount($transaction->amount);
 
         //the alert can use polymorphism too
         return $this->alert->sendAlert('success');
@@ -24,19 +24,18 @@ class Income implements TransactionTypeInterface
 
 class Expense implements TransactionTypeInterface
 {
-    public function __construct(Alert $alert) {
+    public function __construct(Alert $alert) 
+    {
         $this->alert = $alert;
     }
 
     public function processTransaction(Transaction $transaction)
     {
-        
         $account = $transaction->account->subtractAmount($transaction->amount);
-
-        if($transaction->account->current_balance < 0) {
-            //the alert can use polymorphism too
-            return $this->alert->sendAlert('negative_balance');    
-        }
+        
+        if($transaction->account->current_balance < 0) return $this->alert->sendAlert('negative_balance');    
+        
+        return $this->alert->sendAlert('success');
     }
 }
 
